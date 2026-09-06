@@ -52,16 +52,6 @@ El proyecto utiliza PostgreSQL como sistema gestor de base de datos, con migraci
 - JWT para autenticación
 - bcrypt para protección de contraseñas
 
-## ✨ Características principales
-
-- ✅ Registro e inicio de sesión de usuarios mediante autenticación segura.
-- ✅ Gestión completa de tareas (crear, visualizar, actualizar y eliminar).
-- ✅ Protección de rutas mediante autenticación con JWT.
-- ✅ Persistencia de información utilizando PostgreSQL.
-- ✅ Gestión de base de datos mediante Prisma ORM.
-- ✅ Organización del proyecto con arquitectura frontend y backend separadas.
-- 📌 Panel organizado para facilitar la gestión y seguimiento de tareas.
-
 ## 📂 Estructura del proyecto
 
 ```text
