@@ -80,3 +80,5 @@ jobs:
           name: playwright-report
           path: playwright-report/
           retention-days: 30
+          
+# Laboratorio 3 Quality Gate
