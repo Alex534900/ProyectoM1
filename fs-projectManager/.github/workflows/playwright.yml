@@ -1,0 +1,82 @@
+name: Quality Gate Tests
+
+on:
+  push:
+    branches:
+      - main
+      - master
+
+  pull_request:
+    branches:
+      - main
+      - master
+
+
+jobs:
+
+  pruebas:
+    name: Pruebas unitarias y cobertura
+    runs-on: ubuntu-latest
+
+
+    steps:
+
+      - name: Descargar código
+        uses: actions/checkout@v4
+
+
+      - name: Configurar Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+
+      - name: Instalar dependencias
+        run: npm ci
+
+
+      - name: Ejecutar pruebas con cobertura
+        run: npx vitest run --coverage
+
+
+
+  e2e:
+
+    name: Pruebas E2E
+
+    runs-on: ubuntu-latest
+
+
+    steps:
+
+      - name: Descargar código
+        uses: actions/checkout@v4
+
+
+      - name: Configurar Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+
+      - name: Instalar dependencias
+        run: npm ci
+
+
+      - name: Instalar navegador Playwright
+        run: npx playwright install --with-deps chromium
+
+
+      - name: Ejecutar pruebas E2E
+        run: npx playwright test
+
+
+      - name: Guardar reporte Playwright
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30
